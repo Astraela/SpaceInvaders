@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    Example_QuestionMark example;
-    void Start()
+    private EnemySystem enemySystem;
+
+    void Awake()
     {
-        example = new Example_QuestionMark();
+        enemySystem = new EnemySystem();
     }
 
-    // Update is called once per frame
+    void Start(){
+        enemySystem.SpawnEnemies(10,6);
+    }
+
     void Update()
     {
         EventSystem.RaiseEvent(EventType.UPDATE);
