@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySystem
 {
     public ObjectPool<Enemy> enemyPool = new ObjectPool<Enemy>();
-
+    
     public List<Enemy> SpawnEnemies(int columns, int rows){
         List<Enemy> enemyList = new List<Enemy>();
         for (int x = 0; x < columns; x++)

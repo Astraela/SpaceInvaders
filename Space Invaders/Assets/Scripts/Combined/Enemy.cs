@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : iDamageable, iPoolAble
+public class Enemy : IDamageable, iPoolAble
 {
     private GameObject enemy;
     
     private float _health = 10;
-    float iDamageable.health {get => _health;}
+    float IDamageable.health {get => _health; set{_health = value;}}
 
     private bool _active;
     bool iPoolAble.active { get => _active; set => _active = value; }
@@ -16,20 +16,25 @@ public class Enemy : iDamageable, iPoolAble
     public delegate void del(Enemy enemy);
     public del death;
     private Bullet bullet;
+
+    public Enemy(){
+        EventSystem.Subscribe(EventType.UPDATE,Update);
+    }
+
     //todo: Move the enemy right ,left and down. Timer between a random range to Shoot()
     public void Update(){
         
     }
 
     void Shoot(){
-        bullet.Shoot();
+        bullet.Shoot(enemy.transform.position, new Vector2(1,0));
     }
 
-    void iDamageable.Damage(float _damage){
+    void IDamageable.TakeDamage(float _damage){
         _health -= _damage;
     }
 
-    void Die(){
+    void IDamageable.Die(){
         death?.Invoke(this);
     }
 
