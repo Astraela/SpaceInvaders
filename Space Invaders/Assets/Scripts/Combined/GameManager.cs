@@ -11,6 +11,17 @@ public class GameManager : MonoBehaviour
     private MoveRightCommand moveRightCommand = new MoveRightCommand();
     private FireBulletCommand fireBulletCommand = new FireBulletCommand();
 
+
+    void Awake()
+    {
+        Bullet bullet = new PlayerBullet();
+        Bullet spreadShot = new SpreadShot(bullet);
+        Bullet rapidFireShot = new RapidFireShot(spreadShot);
+        Bullet clusterShot = new ClusterShot(rapidFireShot);
+        Bullet piercingShot = new PiercingShot(clusterShot);
+        player.bullet = bullet;
+    }
+
     void Start(){
         SetCommands();
         enemySystem.SpawnEnemies(10,6);

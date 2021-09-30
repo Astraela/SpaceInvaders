@@ -36,6 +36,7 @@ public class Enemy : IDamageable, iPoolAble
 
     void IDamageable.Die(){
         death?.Invoke(this);
+        //Generate Powerup
     }
 
     //TODO: Show EnemyObject
