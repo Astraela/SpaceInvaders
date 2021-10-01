@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : IDamageable, iPoolAble
+public class Powerup : IDamageable, iPoolAble
 {
     private GameObject enemy;
     
@@ -13,11 +13,11 @@ public class Enemy : IDamageable, iPoolAble
     private bool _active;
     bool iPoolAble.active { get => _active; set => _active = value; }
 
-    public delegate void del(Enemy enemy);
+    public delegate void del(Powerup enemy);
     public del death;
     private Bullet bullet;
 
-    public Enemy(){
+    public Powerup(){
         EventSystem.Subscribe(EventType.UPDATE,Update);
     }
 
@@ -51,5 +51,5 @@ public class Enemy : IDamageable, iPoolAble
         EventSystem.Unsubscribe(EventType.UPDATE,Update);
     }
 
-    ~Enemy() => GameObject.Destroy(enemy);
+    ~Powerup() => GameObject.Destroy(enemy);
 }

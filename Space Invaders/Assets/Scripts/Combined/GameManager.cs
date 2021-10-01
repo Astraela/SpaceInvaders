@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private EnemySystem enemySystem = new EnemySystem();
-    private Player player = new Player();
+    private PowerUpSystem powerUpSystem = new PowerUpSystem();
     private InputHandler inputHandler = new InputHandler();
+    private Player player = new Player();
     private MoveLeftCommand moveLeftCommand = new MoveLeftCommand();
     private MoveRightCommand moveRightCommand = new MoveRightCommand();
     private FireBulletCommand fireBulletCommand = new FireBulletCommand();
@@ -14,12 +15,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Bullet bullet = new PlayerBullet();
-        Bullet spreadShot = new SpreadShot(bullet);
-        Bullet rapidFireShot = new RapidFireShot(spreadShot);
-        Bullet clusterShot = new ClusterShot(rapidFireShot);
-        Bullet piercingShot = new PiercingShot(clusterShot);
-        player.bullet = bullet;
+        
     }
 
     void Start(){

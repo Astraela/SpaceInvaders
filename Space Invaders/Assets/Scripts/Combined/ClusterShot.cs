@@ -2,8 +2,8 @@ public class ClusterShot : PlayerBulletDecorator
 {
     public ClusterShot(Bullet bullet) : base(bullet) { }
 
-    private float _damage = 4.5f;
-    private int _amountOfPojectiles = 15;
+    public float _damage = 4.5f;
+    public int _amountOfPojectiles = 15;
 
     public override string GetBulletType()
     {
