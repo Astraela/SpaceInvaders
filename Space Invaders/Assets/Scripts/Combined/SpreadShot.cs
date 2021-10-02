@@ -2,9 +2,9 @@
 public class SpreadShot : PlayerBulletDecorator
 {
     public SpreadShot(Bullet bullet): base(bullet) { }
-    
-    private float _damage = 5;
-    private int _amountOfPojectiles = 3;
+
+    public float _damage = 5;
+    public int _amountOfPojectiles = 3;
 
     //Todo: add logic for firing to more bullets at 45deg from spawnPosition
 
