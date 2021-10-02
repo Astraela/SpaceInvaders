@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gemaakt door: Iedereen
 public class GameManager : MonoBehaviour
 {
-    private EnemySystem enemySystem = new EnemySystem();
-    private PowerUpSystem powerUpSystem = new PowerUpSystem();
+    private EnemySystem enemySystem;
+    public PowerUpSystem powerUpSystem = new PowerUpSystem();
     private InputHandler inputHandler = new InputHandler();
-    private Player player = new Player();
+    private Player player; 
     private MoveLeftCommand moveLeftCommand = new MoveLeftCommand();
     private MoveRightCommand moveRightCommand = new MoveRightCommand();
     private FireBulletCommand fireBulletCommand = new FireBulletCommand();
 
-
-    void Awake()
-    {
-        
+    private void Awake(){
+        player = new Player(powerUpSystem);
+        enemySystem = new EnemySystem(this);
+        SetCommands();
     }
 
-    void Start(){
-        SetCommands();
+    private void Start(){
         enemySystem.SpawnEnemies(10,6);
     }
 
-    void Update()
+    private void Update()
     {
         EventSystem.RaiseEvent(EventType.UPDATE);
     }

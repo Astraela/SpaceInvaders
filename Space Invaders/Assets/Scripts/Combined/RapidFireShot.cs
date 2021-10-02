@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class RapidFireShot : PlayerBulletDecorator
 {
     public RapidFireShot(Bullet bullet) : base(bullet) { }

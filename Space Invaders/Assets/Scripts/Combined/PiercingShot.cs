@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class PiercingShot : PlayerBulletDecorator
 {
     public PiercingShot(Bullet bullet) : base(bullet) { }

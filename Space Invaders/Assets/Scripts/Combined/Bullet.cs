@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gemaakt door: Aaron & Swan
 public class Bullet
 {
     public float speed;

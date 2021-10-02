@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class PlayerBullet : Bullet
 {
     private float _damage = 10;

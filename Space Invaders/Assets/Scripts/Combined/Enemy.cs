@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : IDamageable, iPoolAble
 {
-    private GameObject enemy;
+    public GameObject enemy;
 
     private float _health = 10;
     float IDamageable.health { get => _health; set { _health = value; } }
@@ -17,18 +17,13 @@ public class Enemy : IDamageable, iPoolAble
     public del death;
     private Bullet bullet;
 
-    public Enemy()
-    {
-        EventSystem.Subscribe(EventType.UPDATE, Update);
-    }
-
     //todo: Move the enemy right ,left and down. Timer between a random range to Shoot()
     public void Update()
     {
 
     }
 
-    void Shoot()
+    private void Shoot()
     {
         bullet.Shoot(enemy.transform.position, new Vector2(1, 0));
     }
@@ -38,10 +33,10 @@ public class Enemy : IDamageable, iPoolAble
         _health -= _damage;
     }
 
+    //todo: Generate Powerup
     void IDamageable.Die()
     {
         death?.Invoke(this);
-        //Generate Powerup
     }
 
     //TODO: Show EnemyObject

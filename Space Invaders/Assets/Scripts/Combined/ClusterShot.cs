@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class ClusterShot : PlayerBulletDecorator
 {
     public ClusterShot(Bullet bullet) : base(bullet) { }

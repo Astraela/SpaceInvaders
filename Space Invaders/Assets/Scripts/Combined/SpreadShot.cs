@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class SpreadShot : PlayerBulletDecorator
 {
     public SpreadShot(Bullet bullet): base(bullet) { }

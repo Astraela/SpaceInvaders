@@ -1,3 +1,4 @@
+//Gemaakt door: Swan
 public class PlayerBulletDecorator : Bullet
 {
     private Bullet _bullet;

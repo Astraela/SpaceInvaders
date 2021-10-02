@@ -2,27 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gemaakt door: Amy & Swan
 public class PowerUpSystem
 {
     public ObjectPool<Powerup> powerUpPool = new ObjectPool<Powerup>();
 
-    public List<Powerup> SpawnEnemies(int columns, int rows)
+    public void SpawnPowerup(Vector3 _position)
     {
-        List<Powerup> powerUpList = new List<Powerup>();
-        for (int x = 0; x < columns; x++)
-        {
-            for (int y = 0; y < rows; y++)
-            {
-                Powerup newpowerUp = powerUpPool.RequestItem();
-                powerUpList.Add(newpowerUp);
-                newpowerUp.Pickup += EnemyDeath;
-            }
-        }
-        return powerUpList;
+        Powerup newpowerUp = powerUpPool.RequestItem();
+        newpowerUp.SetPosition(_position);
+        newpowerUp.pickup += Pickup;
     }
 
-    private void EnemyDeath(Powerup enemy)
+    private void Pickup(Powerup _powerup)
     {
-        powerUpPool.DisableItem(enemy);
+        powerUpPool.DisableItem(_powerup);
     }
 }

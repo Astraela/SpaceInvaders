@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gemaakt door: Amy & Swan
 public class Powerup: iPoolAble
 {
-    private Player player = new Player();
-
     private bool _active;
     bool iPoolAble.active { get => _active; set => _active = value; }
 
-    public delegate void powerDel(Enemy enemy);
-    public powerDel _Pickup;
+    public delegate void powerDel(Powerup powerup);
+    public powerDel pickup;
 
-    public Powerup()
-    {
-        EventSystem.Subscribe(EventType.UPDATE, Update);
+    public Transform transform;
+
+    public void SetPosition(Vector3 _position){
+        //transform.position = _position;
     }
 
     //todo: Move the Powerup down. 
@@ -24,7 +24,7 @@ public class Powerup: iPoolAble
         //todo: slowly falls to the bottom and dispears
     }
 
-    public void Pickup()
+    public Bullet Pickup()
     {
 
         //todo: logic for incrmental increase of powerup by one
@@ -33,9 +33,10 @@ public class Powerup: iPoolAble
         Bullet rapidFireShot = new RapidFireShot(spreadShot);
         Bullet clusterShot = new ClusterShot(rapidFireShot);
         Bullet piercingShot = new PiercingShot(clusterShot);
-        player.bullet = bullet;
+        return piercingShot;
     }
-void iPoolAble.OnEnableObject()
+
+    void iPoolAble.OnEnableObject()
     {
         EventSystem.Subscribe(EventType.UPDATE, Update);
     }
@@ -46,4 +47,5 @@ void iPoolAble.OnEnableObject()
         EventSystem.Unsubscribe(EventType.UPDATE, Update);
     }
 
+    ~Powerup() => GameObject.Destroy(transform.gameObject);
 }

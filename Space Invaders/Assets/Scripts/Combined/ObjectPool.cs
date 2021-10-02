@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gemaakt door: Leraar + IEnumerable aan toegevoegd zodat je makkelijk kan loopen door activePool
 public class ObjectPool<T> : IEnumerable where T : iPoolAble
 {
     private List<T> activePool = new List<T>();
