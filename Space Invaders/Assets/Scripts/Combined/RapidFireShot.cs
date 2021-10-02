@@ -3,8 +3,8 @@ public class RapidFireShot : PlayerBulletDecorator
 {
     public RapidFireShot(Bullet bullet) : base(bullet) { }
 
-    private float _damage = 10;
-    private float _speed = 5;
+    public float _damage = 10;
+    public float _speed = 5;
 
     //Todo: add logic for firing more bullets 
 
