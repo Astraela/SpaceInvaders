@@ -18,9 +18,10 @@ public class Enemy : IDamageable, iPoolAble
     private Bullet bullet;
 
     //todo: Move the enemy right ,left and down. Timer between a random range to Shoot()
+    //todo: Detect bullet collision
     public void Update()
     {
-
+        
     }
 
     private void Shoot()

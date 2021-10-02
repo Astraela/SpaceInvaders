@@ -11,10 +11,10 @@ public class Powerup: iPoolAble
     public delegate void powerDel(Powerup powerup);
     public powerDel pickup;
 
-    public Transform transform;
+    public GameObject gameObject;
 
     public void SetPosition(Vector3 _position){
-        //transform.position = _position;
+        //gameObject.transform.position = _position;
     }
 
     //todo: Move the Powerup down. 
@@ -47,5 +47,5 @@ public class Powerup: iPoolAble
         EventSystem.Unsubscribe(EventType.UPDATE, Update);
     }
 
-    ~Powerup() => GameObject.Destroy(transform.gameObject);
+    ~Powerup() => GameObject.Destroy(gameObject);
 }
