@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class PowerUpSystem
 {
-    public ObjectPool<Powerup> PowerupPool = new ObjectPool<Powerup>();
+    public ObjectPool<Powerup> powerUpPool = new ObjectPool<Powerup>();
 
     public List<Powerup> SpawnEnemies(int columns, int rows)
     {
-        List<Powerup> enemyList = new List<Powerup>();
+        List<Powerup> powerUpList = new List<Powerup>();
         for (int x = 0; x < columns; x++)
         {
             for (int y = 0; y < rows; y++)
             {
-                Powerup newEnemy = PowerupPool.RequestItem();
-                enemyList.Add(newEnemy);
-                newEnemy.death += EnemyDeath;
+                Powerup newpowerUp = powerUpPool.RequestItem();
+                powerUpList.Add(newpowerUp);
+                newpowerUp.Pickup += EnemyDeath;
             }
         }
-        return enemyList;
+        return powerUpList;
     }
 
     private void EnemyDeath(Powerup enemy)
     {
-        PowerupPool.DisableItem(enemy);
+        powerUpPool.DisableItem(enemy);
     }
 }

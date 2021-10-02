@@ -3,38 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup : IDamageable, iPoolAble
+public class Enemy : IDamageable, iPoolAble
 {
     private GameObject enemy;
-    
+
     private float _health = 10;
-    float IDamageable.health {get => _health; set{_health = value;}}
+    float IDamageable.health { get => _health; set { _health = value; } }
 
     private bool _active;
     bool iPoolAble.active { get => _active; set => _active = value; }
 
-    public delegate void del(Powerup enemy);
+    public delegate void del(Enemy enemy);
     public del death;
     private Bullet bullet;
 
-    public Powerup(){
-        EventSystem.Subscribe(EventType.UPDATE,Update);
+    public Enemy()
+    {
+        EventSystem.Subscribe(EventType.UPDATE, Update);
     }
 
     //todo: Move the enemy right ,left and down. Timer between a random range to Shoot()
-    public void Update(){
-        
+    public void Update()
+    {
+
     }
 
-    void Shoot(){
-        bullet.Shoot(enemy.transform.position, new Vector2(1,0));
+    void Shoot()
+    {
+        bullet.Shoot(enemy.transform.position, new Vector2(1, 0));
     }
 
-    void IDamageable.TakeDamage(float _damage){
+    void IDamageable.TakeDamage(float _damage)
+    {
         _health -= _damage;
     }
 
-    void IDamageable.Die(){
+    void IDamageable.Die()
+    {
         death?.Invoke(this);
         //Generate Powerup
     }
@@ -42,14 +47,14 @@ public class Powerup : IDamageable, iPoolAble
     //TODO: Show EnemyObject
     void iPoolAble.OnEnableObject()
     {
-        EventSystem.Subscribe(EventType.UPDATE,Update);
+        EventSystem.Subscribe(EventType.UPDATE, Update);
     }
 
     //TODO: Hide EnemyObject
     void iPoolAble.OnDisableObject()
     {
-        EventSystem.Unsubscribe(EventType.UPDATE,Update);
+        EventSystem.Unsubscribe(EventType.UPDATE, Update);
     }
 
-    ~Powerup() => GameObject.Destroy(enemy);
+    ~Enemy() => GameObject.Destroy(enemy);
 }
