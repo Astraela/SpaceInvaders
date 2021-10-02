@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemySystem
 {
     public ObjectPool<Enemy> enemyPool = new ObjectPool<Enemy>();
-    
-    public List<Enemy> SpawnEnemies(int columns, int rows){
+
+    public List<Enemy> SpawnEnemies(int columns, int rows)
+    {
         List<Enemy> enemyList = new List<Enemy>();
         for (int x = 0; x < columns; x++)
         {
@@ -20,7 +21,8 @@ public class EnemySystem
         return enemyList;
     }
 
-    private void EnemyDeath(Enemy enemy){
+    private void EnemyDeath(Enemy enemy)
+    {
         enemyPool.DisableItem(enemy);
     }
 }
